@@ -14,6 +14,7 @@
 		3B3DF84C2510984C00EBF71E /* CoreData_Project2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DF84A2510984C00EBF71E /* CoreData_Project2.xcdatamodeld */; };
 		3B3DF84E2510984F00EBF71E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DF84D2510984F00EBF71E /* Assets.xcassets */; };
 		3B3DF8512510984F00EBF71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DF84F2510984F00EBF71E /* LaunchScreen.storyboard */; };
+		3B9518642511FD40007300D6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3B9518632511FD40007300D6 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3B3DF84D2510984F00EBF71E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B3DF8502510984F00EBF71E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B3DF8522510984F00EBF71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B9518632511FD40007300D6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../Git Helper Files/README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,8 @@
 		3B3DF8352510984C00EBF71E = {
 			isa = PBXGroup;
 			children = (
+				3B9518622511FD40007300D6 /* doc */,
+				3B9518632511FD40007300D6 /* README.md */,
 				3B3DF8402510984C00EBF71E /* CoreData_Project2 */,
 				3B3DF83F2510984C00EBF71E /* Products */,
 			);
@@ -68,6 +72,14 @@
 				3B3DF84A2510984C00EBF71E /* CoreData_Project2.xcdatamodeld */,
 			);
 			path = CoreData_Project2;
+			sourceTree = "<group>";
+		};
+		3B9518622511FD40007300D6 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = doc;
+			path = "../../Git Helper Files/doc";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +142,7 @@
 			files = (
 				3B3DF8512510984F00EBF71E /* LaunchScreen.storyboard in Resources */,
 				3B3DF84E2510984F00EBF71E /* Assets.xcassets in Resources */,
+				3B9518642511FD40007300D6 /* README.md in Resources */,
 				3B3DF8492510984C00EBF71E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

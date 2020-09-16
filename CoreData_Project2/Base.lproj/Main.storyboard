@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="Pmr-KE-9q2">
             <objects>
-                <viewController id="aqf-6B-Qiz" customClass="ViewController" customModule="CoreData_Project1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aqf-6B-Qiz" customClass="ViewController" customModule="CoreData_Project2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Zj-NS-gH5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,7 +63,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0la-lD-FrQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="104.46428571428571"/>
+            <point key="canvasLocation" x="374" y="104"/>
         </scene>
     </scenes>
     <resources>
