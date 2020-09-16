@@ -1,17 +1,19 @@
 # Create ToDo List using Core Data
 ![cover](doc/cover.gif)
 
-* CoreData
-* Alert Controller with textFeild
+> CoreData
+> Alert Controller with textFeild
 
 
-> Create Single view Xcode Project, Must check core Data option.
-> View Controller embed in Navigation controller from Editor menu in Main Storyboard
-> Add Table view to View Controller, Make Title bigger, insert (+/ADD) bar button item, ensure tableView datasoure to the controller form 
-> go to CoreData.xcdatamodeld file add an entity rename to "Person", add an Attributes: "name"
-> Add one outlet of table view and one BarButtonAction from (+/Add) Button
-> Write those following code over the View Controller
+* Create Single view Xcode Project, Must check core Data option.
+* View Controller embed in Navigation controller from Editor menu in Main Storyboard
+* Add Table view to View Controller, Make Title bigger, insert (+/ADD) bar button item, ensure tableView datasoure to the controller form 
+* go to CoreData.xcdatamodeld file add an entity rename to "Person", add an Attributes: "name"
+* Add one outlet of table view and one BarButtonAction from (+/Add) Button
+* Write those following code over the View Controller
+
 ![cover](doc/a1.png)
+![cover](doc/a2.png)
 
 ```swift
 import UIKit
