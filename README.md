@@ -13,7 +13,7 @@
 * Write those following code over the View Controller
 
 ![cover](doc/a1.png)
-![cover](doc/a2.png)
+![cover](doc/av2.png)
 
 ```swift
 import UIKit
@@ -101,3 +101,172 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 ```
 
 
+# Core Data
+Codegen: Manual/None
+![cover](doc/b1.png)
+### Steps
+1. In this process we need to create external CoreData managed object subclass with properties. For this select projectName.xcmodeld, then select Entity name say Employee, change Codegen: Manual/None and goto EDIT->Create ManagedObjectSubclass. Its will create two file Employee+CoreDataClass and Employee+CoreDataProperties which contains a fetch function of our Model Employee and Model all propertise.
+2. Now cut CoreData related code from Appdelegate, Create PersistantManager subclass and past over there, create a static let constant "shared" for access this class from other class.
+3. Change save function from sceenDelegate. 
+4. Write following code to the ViewController.
+
+
+![cover](doc/b2.png)
+
+
+### Codes	
+**SceneDelegate.swift**
+
+```swift
+func sceneDidEnterBackground(_ scene: UIScene) {
+  PersistantContainer.shared.saveContext()
+    }
+```
+**PersistantContainer.swift**
+
+```swift
+import Foundation
+import CoreData
+
+final class PersistantContainer{
+    
+    init(){}
+    public static let shared = PersistantContainer()
+    // MARK: - Core Data stack
+
+      lazy var persistentContainer: NSPersistentCloudKitContainer = {
+          let container = NSPersistentCloudKitContainer(name: "CoreData_Project3")
+          container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+              if let error = error as NSError? {
+                  fatalError("Unresolved error \(error), \(error.userInfo)")
+              }
+          })
+          return container
+      }()
+
+      //A lazy stored property is a property whose initial value is not calculated until the first time it is used
+     lazy var context = persistentContainer.viewContext
+    // MARK: - Core Data Saving support
+      func saveContext () {
+          if context.hasChanges {
+              do {
+                  try context.save()
+              } catch {
+                  let nserror = error as NSError
+                  fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+              }
+          }
+      }
+}
+
+```
+
+**Employee+CoreDataClass.swift**
+
+```swift
+import Foundation
+import CoreData
+
+@objc(Employee)
+public class Employee: NSManagedObject {
+
+}
+```
+    
+**Employee+CoreDataProperties.swift**
+
+```swift
+import Foundation
+import CoreData
+
+
+extension Employee {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Employee> {
+        return NSFetchRequest<Employee>(entityName: "Employee")
+    }
+
+    @NSManaged public var name: String?
+
+}
+```  
+
+**PersistantContainer.swift**
+
+```swift
+import Foundation
+import CoreData
+
+final class PersistantContainer{
+    
+    init(){}
+    public static let shared = PersistantContainer()
+    // MARK: - Core Data stack
+
+      lazy var persistentContainer: NSPersistentCloudKitContainer = {
+          let container = NSPersistentCloudKitContainer(name: "CoreData_Project3")
+          container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+              if let error = error as NSError? {
+                  fatalError("Unresolved error \(error), \(error.userInfo)")
+              }
+          })
+          return container
+      }()
+
+      //A lazy stored property is a property whose initial value is not calculated until the first time it is used
+     lazy var context = persistentContainer.viewContext
+    // MARK: - Core Data Saving support
+      func saveContext () {
+          if context.hasChanges {
+              do {
+                  try context.save()
+              } catch {
+                  let nserror = error as NSError
+                  fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+              }
+          }
+      }
+}
+``` 
+
+**ViewController.swift**
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        createEmployee()
+       fetchEmployee()
+    }
+
+    func createEmployee(){
+               let employee = Employee(context: PersistantContainer.shared.context)
+               employee.name = "Maruf"
+               PersistantContainer.shared.saveContext()
+           }
+           func fetchEmployee(){
+               do{
+                guard let employee = try PersistantContainer.shared.context.fetch(Employee.fetchRequest()) as? [Employee] else { return }
+//                print("Employees are : \( employee)")
+                employee.forEach{debugPrint($0.name!)}
+               }catch let error as NSError{
+                   print("Could not fetch employee: \(error), \(error.userInfo)")
+               }
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            debugPrint(path[0])
+           }
+    //let predicate = NSPredicate(format: "id==%@", id as CVarArg)
+}
+```
+
+## Defination In One Word
+* **Entity: Model** (Data Structure)
+* **Attributes: Properties** (of Model)
+* **Context: Connection** (to model)
+* **NSManagedObject: Managed/Implrement relationship/behavior** (of data model object)
+* **Container : Address** ( of Core Data Framework)
+
+![cover](doc/c1.png)
